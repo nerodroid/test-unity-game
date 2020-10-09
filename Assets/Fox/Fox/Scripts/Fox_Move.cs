@@ -33,7 +33,7 @@ public class Fox_Move : MonoBehaviour {
 		if(dead==false){
 		//Character doesnt choose direction in Jump									//If you want to choose direction in jump
 			if(attacking==false){													//just delete the (jumping==false)
-				if(jumping==false&&crouching==false){
+				if(crouching==false){
 					Movement();
 					Attack();
 					Special();
@@ -51,7 +51,7 @@ public class Fox_Move : MonoBehaviour {
 		float move = Input.GetAxisRaw("Horizontal");
 		if(Input.GetKey(KeyCode.Z)){
 			//Run
-			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
+			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,   rb.velocity.y);
 			running=true;
 		}else{
 			//Walk
@@ -65,6 +65,7 @@ public class Fox_Move : MonoBehaviour {
 		}else if(rb.velocity.x>0){
 			sp.flipX=false;
 		}
+
 		//Movement Animation
 		if(rb.velocity.x!=0&&running==false){
 			anim.SetBool("Walking",true);
@@ -163,5 +164,6 @@ public class Fox_Move : MonoBehaviour {
 
 	public void TryAgain(){														//Just to Call the level again
 		SceneManager.LoadScene(0);
+		
 	}
 }
